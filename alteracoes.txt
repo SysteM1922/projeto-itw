@@ -1,0 +1,5 @@
+Foi modificado o accordion da página index para um accordion jquery ui
+Foi modificada a disposição dos cards na página de index
+Foi adicionado um autocomplete em todas as páginas de Base de Dados com search apenas dentro da própria
+Foram adicionadas algumas linhas de código no ficheiro jogo.js para acabar com o erro de um title não ter actors associados e criar os inputs ratio sem nome
+A side bar das Bases de Dados foi modificada para se sobrepor ao conteúdo da página

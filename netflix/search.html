@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Home - Netflix API Usage Demo</title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="tabelas.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/b8d60194f8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a class="btn closebtn" onclick="closeNav()">&times;</a>
+        <br />
+        <a class="nav-link" href="index.html"><i class="fas fa-home"></i>Home</a>
+        <a class="nav-link" href="titles.html">Titles</a>
+        <a class="nav-link" href="movies.html">Movies</a>
+        <a class="nav-link" href='tv_shows.html'>Series</a>
+        <a class="nav-link" href="categories.html">Categories</a>
+        <a class="nav-link" href='actors.html'>Actors</a>
+        <a class="nav-link" href="directors.html">Directors</a>
+        <a class="nav-link" href='countries.html'>Countries</a>
+        <a class="nav-link" href="ratings.html">Ratings</a>
+        <a class="nav-link" href="jogo.html">Jogo</a>
+    </div>
+    <span id="stiky" style="font-size:30px;cursor:pointer" onclick="openNav()"><i style=" margin: 1em; color: rgb(255, 255, 255);" class="fas fa-bars fa-lg"></i> </span>
+    <div class="container">
+        <h1 style=" font-size: 6em ;">Search</h1>
+        <div class="form-inline">
+            <input id="input1" class="form-control mr-sm-2" value="" type="search" placeholder="Search" aria-label="Search" style="height:40px">
+            <form class="form">
+                <select id="select" style="height:40px">
+                    <option value="0">All</option>
+                    <option value="1">Titles</option>
+                    <option value="2">Movies</option>
+                    <option value="3">Series</option>
+                    <option value="4">Categories</option>
+                    <option value="5">Actors</option>
+                    <option value="6">Directors</option>
+                    <option value="7">Countries</option>
+                </select>
+
+
+                <a id="href" role="button" aria-disabled="true"><i id="btnpesquisa" style="color: white; padding: 5px;" class="fas fa-search fa-lg form" onclick="search()"></i></a>
+            </form>
+        </div>
+    </div>
+    <!-- ko if:titleRecords().length > 0 -->
+    <div id="titles" class="container">
+        <div class="border-bottom pt-4 pb-2 mb-3">
+            <h2>Search</h2>
+        </div>
+        <div class="container col-12 small">
+            <h4>
+                <span style="color: white;" class="mr-auto pt-2" data-bind="html: 'Titles: ' + titleTotalRecords()"></span>
+            </h4>
+        </div>
+        <div class="clearfix"></div>
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody id="table" data-bind="foreach: titleRecords">
+                <tr>
+                    <td data-bind="text:Id"></td>
+                    <td data-bind="text:Name"></td>
+                    <td class="text-right">
+                        <a class="btn  btn-sm" data-bind="attr: { href:'./titleDetails.html?id=' + Id }">
+                            <i class="fa fa-eye" title="Selecione para ver detalhes"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /ko -->
+    <!-- ko if:movieRecords().length > 0 -->
+    <div id="movies" class="container">
+        <div class="border-bottom pb-2 mb-3"></div>
+        <div class="container col-12 small">
+            <h4>
+                <span style="color: white;" class="mr-auto pt-2" data-bind="html: 'Movies: ' + movieTotalRecords()"></span>
+            </h4>
+        </div>
+        <div class="clearfix"></div>
+        <table id="table" class="table table-striped table-sm small">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody id="table" data-bind="foreach: movieRecords">
+                <tr>
+                    <td data-bind="text:Id"></td>
+                    <td data-bind="text:Name"></td>
+                    <td class="text-right">
+                        <a class="btn  btn-sm" data-bind="attr: { href:'./titleDetails.html?id=' + Id }">
+                            <i class="fa fa-eye" title="Selecione para ver detalhes"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /ko -->
+    <!-- ko if:serieRecords().length > 0 -->
+    <div id="series" class="container">
+        <div class="border-bottom pb-2 mb-3"></div>
+        <div class="container col-12 small">
+            <h4>
+                <span style="color: white;" class="mr-auto pt-2" data-bind="html: 'Series: ' + serieTotalRecords()"></span>
+            </h4>
+        </div>
+        <div class="clearfix"></div>
+        <table id="table" class="table table-striped table-sm small">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody id="table" data-bind="foreach: serieRecords">
+                <tr>
+                    <td data-bind="text:Id"></td>
+                    <td data-bind="text:Name"></td>
+                    <td class="text-right">
+                        <a class="btn  btn-sm" data-bind="attr: { href:'./titleDetails.html?id=' + Id }">
+                            <i class="fa fa-eye" title="Selecione para ver detalhes"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /ko -->
+    <!-- ko if:catRecords().length > 0 -->
+    <div id="cats" class="container">
+        <div class="border-bottom pb-2 mb-3"></div>
+        <div class="container col-12 small">
+            <h4>
+                <span style="color: white;" class="mr-auto pt-2" data-bind="html: 'Categories: ' + catTotalRecords()"></span>
+            </h4>
+        </div>
+        <div class="clearfix"></div>
+        <table id="table" class="table table-striped table-sm small">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Titles</th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody id="table" data-bind="foreach: catRecords">
+                <tr>
+                    <td data-bind="text:Id"></td>
+                    <td data-bind="text:Name"></td>
+                    <td data-bind="text:Titles"></td>
+                    <td class="text-right">
+                        <a class="btn  btn-sm" data-bind="attr: { href:'./categoryDetails.html?id=' + Id }">
+                            <i class="fa fa-eye" title="Selecione para ver detalhes"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /ko -->
+    <!-- ko if:actorRecords().length > 0 -->
+    <div id="actors" class="container">
+        <div class="border-bottom pb-2 mb-3"></div>
+        <div class="container col-12 small">
+            <h4>
+                <span style="color: white;" class="mr-auto pt-2" data-bind="html: 'Actors: ' + actorTotalRecords()"></span>
+            </h4>
+        </div>
+        <div class="clearfix"></div>
+        <table id="table" class="table table-striped table-sm small">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Actors</th>
+                    <th scope="col">Titles</th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody id="table" data-bind="foreach: actorRecords">
+                <tr>
+                    <td data-bind="text:Id"></td>
+                    <td data-bind="text:Name"></td>
+                    <td data-bind="text:Titles"></td>
+                    <td class="text-right">
+                        <a class="btn  btn-sm" data-bind="attr: { href:'./actorDetails.html?id=' + Id }">
+                            <i class="fa fa-eye" title="Selecione para ver detalhes"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /ko -->
+    <!-- ko if:dirRecords().length > 0 -->
+    <div id="dirs" class="container">
+        <div class="border-bottom pb-2 mb-3"></div>
+        <div class="container col-12 small">
+            <h4>
+                <span style="color: white;" class="mr-auto pt-2" data-bind="html: 'Directors: ' + dirTotalRecords()"></span>
+            </h4>
+        </div>
+        <div class="clearfix"></div>
+        <table id="table" class="table table-striped table-sm small">
+            <thead>
+                <tr>
+                    <th style="color: white;" scope="col">ID</th>
+                    <th style="color: white;" scope="col">Director</th>
+                    <th style="color: white;" scope="col">Titles</th>
+                    <th style="color: white;" scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody id="table" data-bind="foreach: dirRecords">
+                <tr>
+                    <td data-bind="text:Id"></td>
+                    <td data-bind="text:Name"></td>
+                    <td data-bind="text:Titles"></td>
+                    <td class="text-right">
+                        <a class="btn  btn-sm" data-bind="attr: { href:'./directorDetails.html?id=' + Id }">
+                            <i class="fa fa-eye" title="Selecione para ver detalhes"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /ko -->
+    <!-- ko if:countryRecords().length > 0 -->
+    <div id="countries" class="container">
+        <div class="border-bottom pb-2 mb-3"></div>
+        <div class="container col-12 small">
+            <h4>
+                <span style="color: white;" class="mr-auto pt-2" data-bind="html: 'Countries: ' + countryTotalRecords()"></span>
+            </h4>
+        </div>
+        <div class="clearfix"></div>
+        <table id="table" class="table table-striped table-sm small">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Titles</th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody id="table" data-bind="foreach: countryRecords">
+                <tr>
+                    <td data-bind="text:Id"></td>
+                    <td data-bind="text:Name"></td>
+                    <td data-bind="text:Titles"></td>
+                    <td class="text-right">
+                        <a class="btn  btn-sm" data-bind="attr: { href:'./countryDetails.html?id=' + Id }">
+                            <i class="fa fa-eye" title="Selecione para ver detalhes"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+    </div>
+    <!-- /ko -->
+    <footer class="bg-dark " role="navigation">
+        <div class="navbar-text small ITW">&copy;ITW2020 - Introdução às Tecnologias Web</div>
+        <a class="Ua" href="http://www.ua.pt" title="Universidade de Aveiro">Universidade de Aveiro</a>
+    </footer>
+    <!-- Modal -->
+    <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="../images/netflixIcon.png" height="30" /> Data Found:
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    No results
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="../images/netflixIcon.png" height="30" /> Loading data...
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-spin fa-3x fa-refresh"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../Scripts/jquery-3.5.1.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/knockout-3.5.1.js"></script>
+    <script src="search.js"></script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+</html>

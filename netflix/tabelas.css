@@ -1,0 +1,164 @@
+.pagination > li > a {
+    background-color: rgb(16, 33, 53);
+    color: #ffffff;
+}
+
+    .pagination > li > a:focus,
+    .pagination > li > a:hover,
+    .pagination > li > span:focus,
+    .pagination > li > span:hover {
+        color: #5a5a5a;
+        background-color: #eee;
+        border-color: #ddd;
+    }
+
+.pagination > .active > a {
+    color: white;
+    background-color: rgb(217, 105, 29) !Important;
+    border: solid 1px rgb(217, 105, 29) !Important;
+}
+
+    .pagination > .active > a:hover {
+        background-color: rgb(217, 105, 29) !Important;
+        border: solid 1px rgb(217, 105, 29);
+    }
+
+.table-striped > tbody > tr:nth-child(odd) {
+    background-color: rgb(119,136,153);
+}
+
+.table-striped > tbody > tr:nth-child(even) {
+    background-color: rgb(217, 105, 29);
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+        .sidenav a:hover {
+            color: white;
+        }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 2em;
+        margin-left: 5em;
+    }
+
+
+#stiky {
+    position: fixed;
+    top: 0;
+}
+
+body {
+    overflow-x: hidden;
+    background: repeating-linear-gradient(-55deg,#222, #222 10px,#333 10px,#333 50px)
+}
+
+h1 {
+    color: white;
+}
+
+p {
+    color: white;
+    font-size: 1.3em;
+}
+
+h2 {
+    color: white;
+}
+
+.fa {
+    color: white;
+}
+
+.Ua {
+    float: right;
+    color: white;
+    margin-right: 13px;
+    margin-top: 5px
+}
+
+    .Ua:hover {
+        color: rgb(217, 105, 29);
+        text-decoration: none;
+    }
+
+.ITW {
+    color: white;
+    margin-right: 13px;
+    margin-top: 5px
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+#btn_pesquisa {
+    outline: none;
+    background-color: rgb(217, 105, 29);
+}
+
+    #btn_pesquisa:hover {
+        background-color: rgb(148, 70, 19);
+    }
+
+#btnjogo {
+    outline: none;
+    background-color: rgb(217, 105, 29);
+    box-shadow: none;
+}
+
+    #btnjogo:hover {
+        background-color: rgb(148, 70, 19);
+        box-shadow: none;
+    }
+
+#button {
+    outline: none;
+    background-color: rgb(217, 105, 29);
+    box-shadow: none;
+}
+
+    #button:hover {
+        background-color: rgb(148, 70, 19);
+        box-shadow: none;
+    }
+
+th {
+    color: white;
+    font: 1.3em sans-serif;
+}
+
+a:hover {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}

@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Home - Netflix API Usage Demo</title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="tabelas.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/b8d60194f8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a class="btn closebtn" onclick="closeNav()">&times;</a>
+        <br>
+        <a class="nav-link" href="index.html"><i class="fas fa-home"></i>Home</a>
+        <a class="nav-link" href="titles.html">Titles</a>
+        <a class="nav-link" href="movies.html">Movies</a>
+        <a class="nav-link" href='tv_shows.html'>Series</a>
+        <a class="nav-link" href="categories.html">Categories</a>
+        <a class="nav-link" href='actors.html'>Actors</a>
+        <a class="nav-link" href="directors.html">Directors</a>
+        <a class="nav-link" href='countries.html'>Countries</a>
+        <a class="nav-link" href="ratings.html">Ratings</a>
+        <a style="color: rgb(4, 107, 229);" class="nav-link" href="jogo.html">Jogo</a>
+    </div>
+    <span id="stiky" style="font-size:30px;cursor:pointer" onclick="openNav()"><i style=" margin: 1em; color: rgb(255, 255, 255);" class="fas fa-bars fa-lg"></i> </span>
+    <div class="container border-bottom pt-4 pb-2 mb-3">
+        <h1>Jogo</h1>
+    </div>
+    <div class="container">
+        <h4>
+            <span style="color: white; font-size: 2em;" class="mr-auto pt-2" data-bind="html: 'Que ator/atriz participou no title ' + title()"></span>
+        </h4>
+    </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <input name="actor" type="radio" value="0" />  <a data-bind="html: a0() " style="width:23%; color: white;font-size: 1.5em;"></a>
+            </div>
+            <div class="col-3">
+                <input name="actor" type="radio" value="1" />  <a data-bind="html: a1()" style="width:23%; color: white;font-size: 1.5em"></a>
+            </div>
+            <div class="col-3">
+                <input name="actor" type="radio" value="2" />  <a data-bind="html: a2()" style="width:23%; color: white;font-size: 1.5em"></a>
+            </div>
+            <div class="col-3">
+                <input name="actor" type="radio" value="3" />  <a data-bind="html: a3()" style="width:23%; color: white;font-size: 1.5em"></a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <br />
+        <button id="btnjogo" class="btn" type="button" onclick="submit()">Submeter</button>
+    </div>
+    <br />
+    <br />
+    <footer class="bg-dark " role="navigation">
+        <div class="navbar-text small ITW">&copy;ITW2020 - Introdução às Tecnologias Web</div>
+        <a class="Ua" href="http://www.ua.pt" title="Universidade de Aveiro">Universidade de Aveiro</a>
+    </footer>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="../images/netflixIcon.png" height="30" /> Loading data...
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-spin fa-3x fa-refresh"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="correct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="../images/netflixIcon.png" height="30" /> Correto!
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <button id="correct" type="button" class="btn btn-success" style="width:100%">Correto!</button>
+                    <p></p>
+                    <a id="button" role="button" class="btn" href="jogo.html">Jogar outra vez</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="wrong" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="../images/netflixIcon.png" height="30" /> Errado!
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-danger" style="width:100%">Errado!</button>
+                    <p></p>
+                    <a id="button" role="button" class="btn" href="jogo.html">Jogar outra vez</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../Scripts/jquery-3.5.1.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/knockout-3.5.1.js"></script>
+    <script src="jogo.js"></script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+</html>
